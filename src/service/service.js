@@ -4,6 +4,7 @@ const {
   createUserDB,
   getByEmailDB,
   deleteUserDB,
+  updateUserDB,
 } = require("../repository/repository");
 const bcrypt = require("bcrypt");
 
@@ -31,4 +32,20 @@ async function deleteUser(id) {
   return await deleteUserDB(id);
 }
 
-module.exports = { getAllUsers, getUserById, createUser, deleteUser };
+async function authUser(email, password) {
+  const user = await getByEmailDB(email);
+
+  if (!user.length) throw new Error("user not found");
+
+  const hashedPassword = user[0].password;
+
+  if (!(await bcrypt.compare(password, hashedPassword))) throw new Error("error password");
+
+  return user;
+}
+
+async function updateUser(id, name, surname, email, password) {
+  return await updateUserDB(id, name, surname, email, password);
+}
+
+module.exports = { getAllUsers, getUserById, createUser, deleteUser, authUser, updateUser };
