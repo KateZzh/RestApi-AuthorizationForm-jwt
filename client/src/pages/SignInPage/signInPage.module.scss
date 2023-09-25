@@ -1,0 +1,87 @@
+.signInWrapper {
+  margin: 100px auto;
+  max-width: 842px;
+
+  .infoWrapper {
+    h2 {
+      font: 500 23px Inter;
+      color: #12141a;
+      line-height: normal;
+      padding-top: 55px;
+    }
+
+    p {
+      font: 500 14px Inter;
+      color: #606778;
+      line-height: 20px;
+      padding-top: 8px;
+    }
+  }
+
+  .allFormsWrapper {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .formWrapper {
+      width: 841px;
+
+      p {
+        color: #606778;
+        font: 500 12px Inter;
+        line-height: 16px;
+        padding-bottom: 8px;
+      }
+
+      input {
+        color: #7b8499;
+        font: 500 14px Inter;
+        line-height: 20px;
+        width: 100%;
+        border-radius: 6px;
+        border: 1px solid #cad0db;
+        background: #fff;
+        padding: 12px;
+      }
+    }
+  }
+
+  .navOtherPagesWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: self-end;
+    gap: 12px;
+    margin-top: 32px;
+
+    .btnContinue {
+      border-radius: 4px;
+      background: var(--blue-6, #228be6);
+      color: var(--other-white, #fff);
+      font: 400 14px Open Sans;
+      line-height: 34px;
+      width: 96px;
+      padding: 4px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .btnContinue:hover {
+      transition: 0.5s;
+      opacity: 80%;
+    }
+
+    p {
+      color: #7b8499;
+      font: 500 14px Inter;
+      line-height: 20px;
+
+      a {
+        color: #12141a;
+        font: 500 14px Inter;
+        line-height: 20px;
+        text-decoration-line: underline;
+      }
+    }
+  }
+}

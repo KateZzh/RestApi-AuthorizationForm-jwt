@@ -1,12 +1,31 @@
-import React from "react";
+import { useState } from "react";
 import Header from "../../components/Header/Header";
 import style from "./signUpPage.module.scss";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const SignUpPage = () => {
+  const [data, setData] = useState({ name: "", surname: "", email: "", password: "" });
+
+  // const arr = ["email", "password"]
+
+  const getValue = (e) => {
+    setData({ ...data, [e.target.id]: e.target.value });
+  };
+
+  const request = async () => {
+    try {
+      const req = await axios.post("http://localhost:3001/user/", data);
+      console.log(req);
+      alert(req.statusText);
+    } catch (er) {
+      alert(er.response.data);
+    }
+  };
+
   return (
     <div>
-      <Header />
+      <Header isAuth={false} />
 
       <div className={style.signUpWrapper}>
         <div className={style.infoWrapper}>
@@ -21,28 +40,35 @@ const SignUpPage = () => {
           <div className={style.userWrapper}>
             <div className={style.formWrapper}>
               <p>name</p>
-              <input type="text" placeholder="Your name" />
+              <input id="name" type="text" placeholder="Your name" onChange={getValue} />
             </div>
 
             <div className={style.formWrapper}>
               <p>surname</p>
-              <input type="text" placeholder="Your surname" />
+              <input id="surname" type="text" placeholder="Your surname" onChange={getValue} />
             </div>
           </div>
 
           <div className={style.formWrapper}>
             <p>email</p>
-            <input type="text" placeholder="Your email" />
+            <input id="email" type="text" placeholder="Your email" onChange={getValue} />
           </div>
 
           <div className={style.formWrapper}>
             <p>password</p>
-            <input type="password" placeholder="Must be at least 8 characters." />
+            <input
+              id="password"
+              type="password"
+              placeholder="Must be at least 8 characters."
+              onChange={getValue}
+            />
           </div>
         </div>
 
         <div className={style.navOtherPagesWrapper}>
-          <div className={style.btnContinue}>Continue</div>
+          <div className={style.btnContinue} onClick={request}>
+            Continue
+          </div>
 
           <p>
             Already registered? <Link>Sign In</Link>
