@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Header from "../../components/Header/Header";
 import style from "./signInPage.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import useAuth from "../../hooks/useAuth";
+import AuthContext from "../../context/context";
 
 const SignInPage = () => {
-  const { logIn } = useAuth();
+  const { logIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const [data, setData] = useState({ email: "", password: "" });
@@ -20,7 +20,7 @@ const SignInPage = () => {
       const req = await axios.post("http://localhost:3001/user/auth/", data, {
         withCredentials: true,
       });
-      console.log(req.data);
+      
       logIn();
       navigate("/home");
 
@@ -32,7 +32,7 @@ const SignInPage = () => {
 
   return (
     <div>
-      <Header isAuth={false} />
+      <Header />
 
       <div className={style.signInWrapper}>
         <div className={style.infoWrapper}>
@@ -63,7 +63,7 @@ const SignInPage = () => {
           </div>
 
           <p>
-            Not registered yet? <Link>Sign Up</Link>
+            Not registered yet? <Link to={"/sign_up"}>Sign Up</Link>
           </p>
         </div>
       </div>

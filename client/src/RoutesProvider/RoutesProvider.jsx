@@ -10,8 +10,8 @@ const RoutesProvides = (isAuth) => {
       </Routes>
       } 
     return <Routes>
-        <Route path="/" element={<SignInPage />}></Route>
-        <Route path="/signup" element={<SignUpPage />}></Route>
+        <Route path="/sign_in" element={<SignInPage />}></Route>
+        <Route path="/sign_up" element={<SignUpPage />}></Route>
       </Routes>
   }
 

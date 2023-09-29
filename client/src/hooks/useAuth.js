@@ -6,7 +6,7 @@ function useAuth() {
 
 useEffect(() => {
   logIn();
-}, [])
+}, [token])
 
   function logIn() {
     const token = Cookies.get("access_token");

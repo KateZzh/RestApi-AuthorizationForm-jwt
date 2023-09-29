@@ -6,11 +6,16 @@
   gap: 45px;
 
   .signIn,
-  .signUp {
+  .signUp,
+  .signOut {
     padding: 13px 0;
     color: #000;
     font: 400 16px Inter;
     line-height: 100%; /* 16px */
     letter-spacing: -0.64px;
   }
+
+  .signOut {
+    cursor: pointer;
+  } 
 }

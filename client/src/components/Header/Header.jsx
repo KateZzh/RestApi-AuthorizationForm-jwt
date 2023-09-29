@@ -1,14 +1,15 @@
 import style from "./header.module.scss";
 import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
+import AuthContext from "../../context/context";
+import { useContext } from "react";
 
 const Header = () => {
-  const { token, logOut } = useAuth();
+  const { token, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
   function logOutUser() {
     logOut();
-    navigate("/");
+    navigate("/sign_in");
   }
 
   return (
@@ -17,16 +18,16 @@ const Header = () => {
         {!token ? (
           <>
             <div className={style.signIn}>
-              <Link to={"/"}>Sign in</Link>
+              <Link to={"/sign_in"}>Sign in</Link>
             </div>
 
             <div className={style.signUp}>
-              <Link to={"/signup"}>Sign Up</Link>
+              <Link to={"/sign_up"}>Sign Up</Link>
             </div>
           </>
         ) : (
           <>
-            <div className={style.signIn}>
+            <div className={style.signOut}>
               <p onClick={logOutUser}>Sign Out</p>
             </div>
           </>

@@ -4,7 +4,7 @@ import style from "./homePage.module.scss";
 const HomePage = () => {
   return (
     <div>
-      <Header isAuth={true} />
+      <Header />
 
       <div className={style.homeWrapper}>
         <div className={style.img}></div>

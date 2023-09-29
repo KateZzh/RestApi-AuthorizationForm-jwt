@@ -7,8 +7,6 @@ import axios from "axios";
 const SignUpPage = () => {
   const [data, setData] = useState({ name: "", surname: "", email: "", password: "" });
 
-  // const arr = ["email", "password"]
-
   const getValue = (e) => {
     setData({ ...data, [e.target.id]: e.target.value });
   };
@@ -25,7 +23,7 @@ const SignUpPage = () => {
 
   return (
     <div>
-      <Header isAuth={false} />
+      <Header />
 
       <div className={style.signUpWrapper}>
         <div className={style.infoWrapper}>
@@ -71,7 +69,7 @@ const SignUpPage = () => {
           </div>
 
           <p>
-            Already registered? <Link>Sign In</Link>
+            Already registered? <Link to={"/sign_in"}>Sign In</Link>
           </p>
         </div>
       </div>
